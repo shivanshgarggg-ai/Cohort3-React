@@ -1,0 +1,91 @@
+import React, { useState } from 'react'
+import Login from './Login'
+
+
+const Register = ({ setToggle }) => {
+    const [formData, setFormData] = useState({
+
+        name:"" ,
+        email:"",
+        password:""
+    
+
+
+    })
+
+    const [users, setUsers] = useState([])
+    console.log(users);
+    
+
+    const handleChange =(e) => {
+        let {name,value} = e.target
+        setFormData({...formData , [name] : value}) 
+
+
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        setUsers([...users , formData])
+        setFormData(
+            {name: "",
+            email:"",
+            password:"",
+        })
+        
+    }
+
+
+
+    
+  return (
+    <div className='bg-white w-90 p-6 rounded-xl flex flex-col gap-4'>
+        <h1>Register</h1>
+      <form onSubmit={handleSubmit} className='flex flex-col gap-4' action="">
+
+
+    <input 
+        required
+        value={formData.name}
+        name ="name"
+    onChange={handleChange} className='p-2 border border-gray-400 rounded'  
+    type="text"                 
+    placeholder='Name' 
+    /> 
+
+    <input 
+    required
+        value={formData.email}
+
+        name ="email"
+    onChange={handleChange }
+        className='p-2 border border-gray-400 rounded'  
+        type="text"                
+         placeholder='Email' 
+         />   
+
+    <input 
+    required
+        value={formData.password}
+    
+        name ="password"
+    onChange={handleChange }className='p-2 border border-gray-400 rounded'  
+    classnametype="text" 
+     placeholder='Password'
+      />    
+    
+    <button className='p-2 bg-blue-600 text-white rounded'>Register</button>
+          </form>
+        <p>Already have an account? 
+            <span onClick={() => setToggle((prev) => !prev)}
+         className='text-blue-600 cursor-pointer'> Login here</span>
+        </p>
+
+
+    </div>
+  
+    
+  )
+}
+
+export default Register
