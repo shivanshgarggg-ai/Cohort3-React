@@ -1,7 +1,7 @@
 import React from 'react'
 import Navbar from './components/Navbar'
 import Usercard from "./components/Usercard"
-import Form from "./components/Form";
+import FOrm from "./components/FOrm";
 import { useState } from "react";
 const App = () => {
   
